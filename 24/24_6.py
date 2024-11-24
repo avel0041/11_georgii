@@ -4,3 +4,22 @@
 # например последовательность символов YZXYZ считается идущими подряд разделителями YZX, ZXY и XYZ.
 # При дешифровке разделители удаляются, разбивая шифровку на фрагменты.
 # Определите количество символов в самом длинном фрагменте шифровки, полученном после удаления разделителей.
+
+
+f=open('24_6.txt')
+s=f.readline()
+s=s.replace('XYZ', '*')
+s=s.replace('*X', '*')
+s=s.replace('XZY', '*')
+s=s.replace('*X', '*')
+s=s.replace('YZX', '*')
+s=s.replace('*Y', '*')
+s=s.replace('YXZ', '*')
+s=s.replace('*Y', '*')
+s=s.replace('ZYX', '*')
+s=s.replace('*Z', '*')
+s=s.replace('ZXY', '*')
+s=s.replace('*Z', '*')
+s=s.split('*')
+a=max(s, key=len)
+print(len(a))
