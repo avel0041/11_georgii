@@ -24,20 +24,32 @@
 # —  у Вани нет стратегии, которая позволит ему гарантированно выиграть первым ходом.
 
 
-def f(x, h): 
-    if h == 4 and x >= 68: # Если наступил 2ой ход Пети и в куче > 68 камней, то Ваня победил первым ходом
-        return 1
-    elif h == 4 and x < 68: # Если наступил 2ой ход Пети и в куче < 68 камней, то игра продолжается
-        return 0
-    elif x >= 68 and h < 4: #Если еще не наступил 2ой ход Пети, а в куче уже > 68 камней
-        return 0
-    else:
-        if h % 2 == 0:
-            return f(x + 1, h + 1) or f(x + 4, h + 1) or f(x * 5, h + 1)   # стратегия победителя
-        else:
-             return f(x + 1, h + 1) and f(x + 4, h + 1) and f(x * 5, h + 1)  # стратегия проигравшего(неудачный ход)
- 
-for x in range(1, 68):
-    if f(x, 1) == 1: 
-        print(x)
-        break
+def v1(a):
+    return ((a+1>=68) or (a*5>=68) or (a+4>=68)) and (a<=67)
+def p1(a):
+    return v1(a+1) and v1(a+4) and v1(a*5) and not(v1(a))
+def v2(a):
+    return p1(a+1) or p1(a*5) or p1(a+4)
+def p2(a):
+    return (v2(a+1) or v2(a+4) or v2(a*5)) and (v1(a+1) or v2(a+1)) and (v1(a+4) or v2(a+4)) and (v1(a*5) or v2(a*5))
+def wr_p1(a):
+    return (v1(a+1) or v1(a+4) or v1(a*5)) and not(v1(a))
+
+
+a=[]
+for s in range(1, 68):
+    if wr_p1(s) == 1:
+        a.append(s)
+print(a, min(a))
+
+b=[]
+for s in range(1, 68):
+    if v2(s) == 1:
+        b.append(s)
+print(b)
+
+c=[]
+for s in range(1, 68):
+    if p2(s) == 1:
+        c.append(s)
+print(c, min(c))
