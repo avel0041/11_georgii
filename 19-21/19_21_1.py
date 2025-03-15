@@ -46,7 +46,7 @@ for s in range(1, 70):
         w.append(s)
 print(w)
 
-# c=[]
+# c=[] 30
 # for s in range(1, 68):
 #     if p2(s) == 1:
 #         c.append(s)
