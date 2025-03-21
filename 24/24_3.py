@@ -6,15 +6,6 @@ f=open('24_3.txt')
 s=f.readlines()
 counter = 0
 for i in s:
-    # k=0
-    # c=0
-    # for w in i:
-    #     if w=='E':
-    #         k=k+1
-    #     if w =='A':
-    #         c=c+1
-    # if k>c:
-    #     a.append(k)
     if i.count('E') > i.count('A'):
         counter += 1
 print(counter)
