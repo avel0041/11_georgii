@@ -26,7 +26,7 @@ def v1(a, b):
 def p1(a, b):
     return v1(a+1, b) and v1(a*2, b) and v1(a, 1+b) and v1(a, b*2) and not(v1(a, b))
 def v2(a, b):
-    return p1(a+1, b) or p1(a*2, b) or p1(a, b+1) or p1(a, b*2) 
+    return (p1(a+1, b) or p1(a*2, b) or p1(a, b+1) or p1(a, b*2)) and not(p1(a, b))
 # def p2(a,b):
 #     return (v2(a+1, b) or v2(a*2, b) or v2(a, b*2) or v2(a, b+1)) and (v1(a+1, b) or v2(a+1)) and (v1(a+4) or v2(a+4)) and (v1(a*5) or v2(a*5))
 def wr_p1(a,b):
